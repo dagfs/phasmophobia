@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+ol li{
+  font-size:20px;
+}
+ol li:last-child{
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+button{
+  position: fixed;
+  bottom:10px;
+  left:5%;
+  font-size: 40px;
+  width:90%;
+}

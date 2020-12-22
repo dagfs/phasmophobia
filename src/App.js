@@ -67,16 +67,17 @@ function App() {
   return (
     <div className="App">
       <h1>Photo Randomizer</h1>
-      <button onClick={pickItem}>Pick item</button>
 
-      <ul>
+      <ol>
       {photoR.selectedItems.map((i,k) => {
       return (<li key={k}>
         {i}
       </li>)
 
       })}
-      </ul>
+      </ol>
+      <button onClick={pickItem}>Pick item</button>
+
     </div>
   );
 }
