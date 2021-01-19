@@ -65,8 +65,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Photo Randomizer</h1>
+    <div id="pr">
+      <h2>Photo Randomizer</h2>
 
       <ol>
       {photoR.selectedItems.map((i,k) => {

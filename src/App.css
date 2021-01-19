@@ -8,21 +8,50 @@ body{
   
 }
 
-ol li{
+#pr h2{
+  text-align: center;
+}
+
+#pr ol li{
+  text-align: center;
+
   font-size:20px;
 }
-ol li:last-child{
+#pr ol li:last-child{
   font-size: 30px;
   font-weight: bolder;
 }
 
-button{
+#pr button{
   position: fixed;
-  bottom:10px;
+  bottom:80px;
   left:5%;
   font-size: 40px;
   width:90%;
   color:#111;
+}
+
+#ge table{
+  width:100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+#ge thead th{
+  transform: 
+    /* Magic Numbers */
+    translate(0px, 20px)
+    /* 45 is really 360 - 45 */
+    rotate(270deg);
+    width:5px;
+    height:100px;
+}
+
+#ge th, #ge td{
+  border:1px solid #aaa;
+}
+
+#ge thead th:first-child{
+    width:10px;
 }
 
 .front{

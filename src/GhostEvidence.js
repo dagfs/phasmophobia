@@ -1,83 +1,100 @@
 import './App.css';
 import React, { useState } from 'react';
 
-const  pRItems = [
+const E = {
+  EMF : "EMF",
+  ORBS : "ORBS",
+  WRITING : "WRITING",
+  FREEZING : "FREEZING",
+  SPIRITBOX : "SPIRITBOX",
+  FINGIES : "FINGIES"
+}
 
-  "EMF Reader",
-  "Ghost Writing Book",
-  "Spirit Box",
-  "Thermometer",
-  "Video Camera",
-  "UV Flashlight",
-  "Photo Camera",
-  "Flashlight & Strong Flashlight",
-  "Candle",
-  "Crucifix",
-  "Glow Stick",
-  "Head Mounted Camera",
-  "Infrared Light Sensor",
-  "Lighter",
-  "Motion Sensor",
-  "Parabolic Microphone",
-  "Salt Shaker",
-  "Sanity Pills",
-  "Smudge Sticks",
-  "Sound Sensor",
-  "Tripod",
+const ELabels = [E.EMF, E.ORBS, E.WRITING, E.FREEZING, E.SPIRITBOX, E.FREEZING];
+
+const ghosts = [
+  {
+    name:"Shade",
+    evidence: [E.EMF,E.ORBS,E.WRITING]
+  },
+  {
+    name:"Phantom",
+    evidence: [E.EMF,E.EMF,E.FREEZING]
+  },
+  {
+    name:"Jinn",
+    evidence: [E.EMF,E.EMF,E.SPIRITBOX]
+  },
+  {
+    name:"Yurei",
+    evidence: [E.ORBS,E.WRITING,E.FREEZING]
+  },
+  {
+    name:"Mare",
+    evidence: [E.ORBS,E.FREEZING,E.SPIRITBOX]
+  },
+  {
+    name:"Deamon",
+    evidence: [E.WRITING,E.FREEZING,E.SPIRITBOX]
+  },
+  {
+    name:"Banshee",
+    evidence: [E.EMF,E.FREEZING,E.FINGIES]
+  },
+  {
+    name:"Revenant",
+    evidence: [E.EMF,E.WRITING,E.FINGIES]
+  },
+  {
+    name:"Oni",
+    evidence: [E.EMF,E.WRITING,E.SPIRITBOX]
+  },
+  {
+    name:"Poltergeist",
+    evidence: [E.ORBS,E.SPIRITBOX,E.FINGIES]
+  },
+  {
+    name:"Spirit",
+    evidence: [E.WRITING,E.SPIRITBOX,E.FINGIES]
+  },
+  {
+    name:"Wraith",
+    evidence: [E.FREEZING,E.SPIRITBOX,E.FINGIES]
+  },
+  
 ]
 
 function App() {
-  const [photoR, setPhotoR] = useState({
-    items : [
 
-      "EMF Reader",
-      "Ghost Writing Book",
-      "Spirit Box",
-      "Thermometer",
-      "Video Camera",
-      "UV Flashlight",
-      "Candle",
-      "Crucifix",
-      "Glow Stick",
-      "Head Mounted Camera",
-      "Infrared Light Sensor",
-      "Motion Sensor",
-      "Parabolic Microphone",
-      "Salt Shaker",
-      "Sanity Pills",
-      "Smudge Sticks",
-      "Sound Sensor",
-      "Tripod",
-    ],
-    selectedItems : []
-  });
 
-  const pickItem = () => {
-    const items = photoR.items;
-    const i = Math.floor( Math.random() * items.length )
-    const item = items.splice(i, 1)
-    const selectedItems = [...photoR.selectedItems, item]
-    const pr = {
-      items,
-      selectedItems
-    }
-    setPhotoR(pr);
-  }
 
   return (
-    <div className="App">
-      <h1>Photo Randomizer</h1>
+    <div id="ge">
+      <h2>Ghost Evidence</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            {
+              ELabels.map(i => <th>{i}</th>)
+            }
+          </tr>
+        </thead>
+        <tbody>
+        {ghosts.map(g => <tr>
+            <td>{g.name}</td>
+            {
+              ELabels.map(e => <th>{g.evidence.includes(e) ? "X" : ""}</th>)
 
-      <ol>
-      {photoR.selectedItems.map((i,k) => {
-      return (<li key={k}>
-        {i}
-      </li>)
+            }
+          </tr>
+          )}
+          
+          
+        </tbody>
+      </table>
 
-      })}
-      </ol>
-      <button onClick={pickItem}>Pick item</button>
-
+    
     </div>
   );
 }
