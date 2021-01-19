@@ -1,84 +1,39 @@
 import './App.css';
+import PhotoRandomizer from './PhotoRandomizer';
+import GhostEvidence from './GhostEvidence';
 import React, { useState } from 'react';
 
-const  pRItems = [
 
-  "EMF Reader",
-  "Ghost Writing Book",
-  "Spirit Box",
-  "Thermometer",
-  "Video Camera",
-  "UV Flashlight",
-  "Photo Camera",
-  "Flashlight & Strong Flashlight",
-  "Candle",
-  "Crucifix",
-  "Glow Stick",
-  "Head Mounted Camera",
-  "Infrared Light Sensor",
-  "Lighter",
-  "Motion Sensor",
-  "Parabolic Microphone",
-  "Salt Shaker",
-  "Sanity Pills",
-  "Smudge Sticks",
-  "Sound Sensor",
-  "Tripod",
-]
+import { HashRouter, Switch, Route, Link } from "react-router-dom";
+
 
 function App() {
-  const [photoR, setPhotoR] = useState({
-    items : [
-
-      "EMF Reader",
-      "Ghost Writing Book",
-      "Spirit Box",
-      "Thermometer",
-      "Video Camera",
-      "UV Flashlight",
-      "Candle",
-      "Crucifix",
-      "Glow Stick",
-      "Head Mounted Camera",
-      "Infrared Light Sensor",
-      "Motion Sensor",
-      "Parabolic Microphone",
-      "Salt Shaker",
-      "Sanity Pills",
-      "Smudge Sticks",
-      "Sound Sensor",
-      "Tripod",
-    ],
-    selectedItems : []
-  });
-
-  const pickItem = () => {
-    const items = photoR.items;
-    const i = Math.floor( Math.random() * items.length )
-    const item = items.splice(i, 1)
-    const selectedItems = [...photoR.selectedItems, item]
-    const pr = {
-      items,
-      selectedItems
-    }
-    setPhotoR(pr);
-  }
+  
 
   return (
-    <div className="App">
-      <h1>Photo Randomizer</h1>
-
-      <ol>
-      {photoR.selectedItems.map((i,k) => {
-      return (<li key={k}>
-        {i}
-      </li>)
-
-      })}
-      </ol>
-      <button onClick={pickItem}>Pick item</button>
-
-    </div>
+    <HashRouter>
+      <div>
+        <Switch>
+          <Route path="/photo-randomizer" component={PhotoRandomizer}></Route>
+          <Route path="/ghost-evidence" component={GhostEvidence}></Route>
+          <Route path="/">
+            <div>
+              <h2 class="front">
+                Fan made mobile tools to enhance the experience and help you while playing <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiHhsPpzKjuAhXw-SoKHVZSAsYQFjAIegQIARAC&url=https%3A%2F%2Fstore.steampowered.com%2Fapp%2F739630%2FPhasmophobia%2F&usg=AOvVaw2ZDD5MkMpzDKwtTrH3sgO6">Phasmophobia</a>
+              </h2>
+                <Link class="link-button"to="/photo-randomizer"> Photo Randomizer</Link>
+                <Link class="link-button" to="/ghost-evidence">Ghost Evidence</Link>
+           </div>
+          </Route>
+        </Switch>
+        <div class="navigation">
+        <Link to="/"> Home</Link>
+        <Link to="/photo-randomizer"> PR</Link>
+                <Link to="/ghost-evidence">GE</Link>
+           
+        </div>
+      </div>
+    </HashRouter>
   );
 }
 
