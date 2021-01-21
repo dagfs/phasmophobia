@@ -17,6 +17,7 @@ function App() {
   return (
     <HashRouter>
       <div>
+        <div id="main">
         <Switch>
         <Route path="/photo-randomizer/settings">
             <PhotoRandomizerSettings photoRandomizer={photoRandomizer} setPhotoRandomizer={setPhotoRandomizer} />
@@ -36,6 +37,7 @@ function App() {
            </div>
           </Route>
         </Switch>
+        </div>
         <div class="navigation">
           <Link to="/"><FontAwesomeIcon icon={faHome} /> Home</Link>
           <Link to="/photo-randomizer"><FontAwesomeIcon icon={faCameraRetro} />  PR</Link>

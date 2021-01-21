@@ -76,7 +76,7 @@ function App() {
           <tr>
             <th></th>
             {
-              ELabels.map(i => <th>{i}</th>)
+              ELabels.map(i => <th><div className="rotate90deg">{i}</div></th>)
             }
           </tr>
         </thead>

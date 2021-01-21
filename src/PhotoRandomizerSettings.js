@@ -26,14 +26,16 @@ function PhotoRandomizerSettings({photoRandomizer, setPhotoRandomizer}) {
   return (
     <div id="prs">
       <h2>Photo Randomizer Settings</h2>
-      <ul>
         {photoRandomizer.items.map((i,k) => {
-        return (<li className={`${photoRandomizer.selectedItems.includes(i) ? "" : "strikethrough"}`} key={k} onClick={() => toggleItem(i)}>
+        return (
+        <div className="list">
+          <input type="checkbox" checked={photoRandomizer.selectedItems.includes(i)}/>
+          <span className={`item ${photoRandomizer.selectedItems.includes(i) ? "" : "strikethrough"}`} key={k} onClick={() => toggleItem(i)}>
           {i}
-        </li>)
+          </span>
+        </div>)
 
         })}
-      </ul>
       <div className="center">
         <Link class="link-button" to="/photo-randomizer">Save</Link>
       </div>
