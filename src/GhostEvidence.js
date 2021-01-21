@@ -1,5 +1,83 @@
 import './App.css';
-import React, { useState } from 'react';
+
+
+
+
+
+function App({ghostEvidence, setGhostEvidence}) {
+
+  const toggleEvidence = (evidence) => {
+    const evidenceState = ghostEvidence.selectedEvidence[evidence];
+
+    var newState;
+    if(evidenceState === STATE.NOT_CONFIRMED){
+      newState=STATE.CONFIRMED;
+    }
+    else if(evidenceState === STATE.CONFIRMED){
+      newState=STATE.CONFIRMED_NOT_PRESENT;
+    } 
+    else{
+      newState = STATE.NOT_CONFIRMED;
+    }
+    setGhostEvidence({
+      ...ghostEvidence,
+      selectedEvidence: {
+        ...ghostEvidence.selectedEvidence,
+        [evidence]: newState
+      }
+    })
+  }
+
+  let filteredGhosts = [...ghosts];
+
+  ELabels.map(el => {
+    if(ghostEvidence.selectedEvidence[el] === STATE.CONFIRMED){
+      filteredGhosts = filteredGhosts.filter(ghost => 
+        ghost.evidence.includes(el)
+       ) 
+    } else if(ghostEvidence.selectedEvidence[el] === STATE.CONFIRMED_NOT_PRESENT){
+      filteredGhosts = filteredGhosts.filter(ghost => 
+        !ghost.evidence.includes(el)
+      ) 
+    }
+  })
+
+  return (
+    <div id="ge">
+      <h2>Ghost Evidence</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            {
+              ELabels.map(i => <th><div className="rotate90deg" onClick={() => toggleEvidence(i)}>{i} {getSymbol(ghostEvidence.selectedEvidence[i])}</div></th>)
+            }
+        </tr>
+      </thead>
+      <tbody>
+        {filteredGhosts.map(g => <tr>
+            <td>{g.name}</td>
+            {
+              ELabels.map(e => <td>{g.evidence.includes(e) ? "X" : ""}</td>)
+
+            }
+          </tr>
+          )}
+          
+          
+        </tbody>
+      </table>
+
+    
+    </div>
+  );
+}
+
+const getSymbol = (state) => {
+  if(state === STATE.CONFIRMED) return "✓";
+  if(state === STATE.CONFIRMED_NOT_PRESENT) return "x";
+  return "?";
+}
 
 const E = {
   EMF : "EMF",
@@ -10,7 +88,7 @@ const E = {
   FINGIES : "FINGIES"
 }
 
-const ELabels = [E.EMF, E.ORBS, E.WRITING, E.FREEZING, E.SPIRITBOX, E.FREEZING];
+const ELabels = [E.EMF, E.ORBS, E.WRITING, E.FREEZING, E.SPIRITBOX, E.FINGIES];
 
 const ghosts = [
   {
@@ -64,39 +142,22 @@ const ghosts = [
   
 ]
 
-function App() {
-
-
-
-  return (
-    <div id="ge">
-      <h2>Ghost Evidence</h2>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            {
-              ELabels.map(i => <th><div className="rotate90deg">{i}</div></th>)
-            }
-          </tr>
-        </thead>
-        <tbody>
-        {ghosts.map(g => <tr>
-            <td>{g.name}</td>
-            {
-              ELabels.map(e => <th>{g.evidence.includes(e) ? "X" : ""}</th>)
-
-            }
-          </tr>
-          )}
-          
-          
-        </tbody>
-      </table>
-
-    
-    </div>
-  );
+const STATE = {
+  CONFIRMED: "CONFIRMED",
+  NOT_CONFIRMED: "NOT_CONFIRMED",
+  CONFIRMED_NOT_PRESENT: "CONFIRMED_NOT_PRESENT"
 }
 
 export default App;
+export const InitGhostEvidence = () => {
+  return {
+    selectedEvidence : {
+      EMF : STATE.NOT_CONFIRMED,
+      ORBS : STATE.NOT_CONFIRMED,
+      WRITING : STATE.NOT_CONFIRMED,
+      FREEZING : STATE.NOT_CONFIRMED,
+      SPIRITBOX : STATE.NOT_CONFIRMED,
+      FINGIES : STATE.NOT_CONFIRMED
+    }
+  };
+};

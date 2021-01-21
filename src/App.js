@@ -1,6 +1,6 @@
 import './App.css';
 import PhotoRandomizer, {InitPhotoRandomizer} from './PhotoRandomizer';
-import GhostEvidence from './GhostEvidence';
+import GhostEvidence, {InitGhostEvidence} from './GhostEvidence';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCameraRetro, faHome, faTable } from '@fortawesome/free-solid-svg-icons'
@@ -12,6 +12,7 @@ import PhotoRandomizerSettings from './PhotoRandomizerSettings';
 
 function App() {
   const [photoRandomizer, setPhotoRandomizer] = useState(InitPhotoRandomizer());
+  const [ghostEvidence, setGhostEvidence] = useState(InitGhostEvidence());
  
 
   return (
@@ -26,7 +27,9 @@ function App() {
             <PhotoRandomizer photoRandomizer={photoRandomizer} setPhotoRandomizer={setPhotoRandomizer} />
           </Route>
          
-          <Route path="/ghost-evidence" component={GhostEvidence}></Route>
+          <Route path="/ghost-evidence" >
+            <GhostEvidence ghostEvidence={ghostEvidence} setGhostEvidence={setGhostEvidence}/>
+          </Route>
           <Route path="/">
             <div>
               <h2 class="front">

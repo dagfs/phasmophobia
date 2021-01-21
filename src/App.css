@@ -52,6 +52,14 @@ body{
     height:100px;
 }
 
+#ge td:first-child{
+  text-align: left;
+  }
+
+#ge td{
+text-align: center;
+}
+
 .rotate90deg{
   transform: 
     /* Magic Numbers */
@@ -79,11 +87,11 @@ body{
 .link-button-home{
   display: block;
   width:80%;
-  margin:5%;
+  margin:20px auto;
   background-color: #eee;
   color:#111;
-  padding:5%;
-  border-radius: 5%;
+  padding:20px;
+  border-radius: 5px;
 }
 
                 
