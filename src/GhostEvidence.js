@@ -28,6 +28,20 @@ function App({ghostEvidence, setGhostEvidence}) {
     })
   }
 
+  const reset = () => {
+    setGhostEvidence({
+      ...ghostEvidence,
+      selectedEvidence: {
+        EMF : STATE.NOT_CONFIRMED,
+        ORBS : STATE.NOT_CONFIRMED,
+        WRITING : STATE.NOT_CONFIRMED,
+        FREEZING : STATE.NOT_CONFIRMED,
+        SPIRITBOX : STATE.NOT_CONFIRMED,
+        FINGIES : STATE.NOT_CONFIRMED
+      }
+    })
+  }
+
   let filteredGhosts = [...ghosts];
 
   ELabels.map(el => {
@@ -50,7 +64,7 @@ function App({ghostEvidence, setGhostEvidence}) {
           <tr>
             <th></th>
             {
-              ELabels.map(i => <th><div className="rotate90deg" onClick={() => toggleEvidence(i)}>{i} {getSymbol(ghostEvidence.selectedEvidence[i])}</div></th>)
+              ELabels.map(i => <th className={getClassName(ghostEvidence.selectedEvidence[i])}><div className="rotate90deg" onClick={() => toggleEvidence(i)}>{i} {getSymbol(ghostEvidence.selectedEvidence[i])}</div></th>)
             }
         </tr>
       </thead>
@@ -67,6 +81,10 @@ function App({ghostEvidence, setGhostEvidence}) {
           
         </tbody>
       </table>
+      <div className="center">
+        <br/>
+        <button onClick={reset}>Reset</button>
+      </div>
 
     
     </div>
@@ -77,6 +95,12 @@ const getSymbol = (state) => {
   if(state === STATE.CONFIRMED) return "✓";
   if(state === STATE.CONFIRMED_NOT_PRESENT) return "x";
   return "?";
+}
+
+const getClassName = (state) => {
+  if(state === STATE.CONFIRMED) return "confirmed";
+  if(state === STATE.CONFIRMED_NOT_PRESENT) return "confirmed-not-present";
+  return "";
 }
 
 const E = {
