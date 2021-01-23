@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/phasmophobia/static/css/main.f4fc3872.chunk.css",
-    "main.js": "/phasmophobia/static/js/main.d6a46ead.chunk.js",
-    "main.js.map": "/phasmophobia/static/js/main.d6a46ead.chunk.js.map",
+    "main.js": "/phasmophobia/static/js/main.21a4ce1e.chunk.js",
+    "main.js.map": "/phasmophobia/static/js/main.21a4ce1e.chunk.js.map",
     "runtime-main.js": "/phasmophobia/static/js/runtime-main.b4008e00.js",
     "runtime-main.js.map": "/phasmophobia/static/js/runtime-main.b4008e00.js.map",
     "static/js/2.bed3c12d.chunk.js": "/phasmophobia/static/js/2.bed3c12d.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b4008e00.js",
     "static/js/2.bed3c12d.chunk.js",
     "static/css/main.f4fc3872.chunk.css",
-    "static/js/main.d6a46ead.chunk.js"
+    "static/js/main.21a4ce1e.chunk.js"
   ]
 }
