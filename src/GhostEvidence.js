@@ -97,11 +97,11 @@ const ghosts = [
   },
   {
     name:"Phantom",
-    evidence: [E.EMF,E.EMF,E.FREEZING]
+    evidence: [E.EMF,E.ORBS,E.FREEZING]
   },
   {
     name:"Jinn",
-    evidence: [E.EMF,E.EMF,E.SPIRITBOX]
+    evidence: [E.EMF,E.ORBS,E.SPIRITBOX]
   },
   {
     name:"Yurei",
