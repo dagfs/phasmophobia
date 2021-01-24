@@ -36,8 +36,8 @@ function App({photoRandomizer, setPhotoRandomizer}) {
     <div id="pr">
       <h2>Photo Randomizer</h2>
       <div className="center">
-      <button onClick={reset}>Reset</button>
-      <Link class="link-button" to="/photo-randomizer/settings"><FontAwesomeIcon icon={faCog} />Settings</Link>
+        <button onClick={reset}>Reset</button>
+        <Link class="link-button" to="/photo-randomizer/settings"><FontAwesomeIcon icon={faCog} />Settings</Link>
       </div>
       <ol>
       {photoRandomizer.drawnItems.map((i,k) => {
@@ -91,19 +91,14 @@ export const InitPhotoRandomizer = () => {
       "Photo Camera",
       "Flashlight",
       "Strong Flashlight",
-      "Candle",
       "Crucifix",
       "Glow Stick",
       "Head Mounted Camera",
-      "Infrared Light Sensor",
-      "Lighter",
       "Motion Sensor",
       "Parabolic Microphone",
       "Salt Shaker",
       "Sanity Pills",
       "Smudge Sticks",
-      "Sound Sensor",
-      "Tripod",
   ],
     itemsToDrawFrom : [
       "EMF Reader",

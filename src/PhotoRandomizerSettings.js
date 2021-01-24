@@ -23,6 +23,14 @@ function PhotoRandomizerSettings({photoRandomizer, setPhotoRandomizer}) {
     }
   }
 
+  const save = () => {
+    setPhotoRandomizer({
+      ...photoRandomizer,
+      itemsToDrawFrom : [...photoRandomizer.selectedItems],
+      drawnItems : []
+    });
+  }
+
   return (
     <div id="prs">
       <h2>Photo Randomizer Settings</h2>
@@ -34,13 +42,10 @@ function PhotoRandomizerSettings({photoRandomizer, setPhotoRandomizer}) {
           {i}
           </span>
         </div>)
-
         })}
       <div className="center">
-        <Link class="link-button" to="/photo-randomizer">Save</Link>
+        <Link class="link-button" onClick={save} to="/photo-randomizer">Save</Link>
       </div>
-
-
     </div>
   );
 }
