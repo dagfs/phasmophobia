@@ -72,8 +72,7 @@ function App({ghostEvidence, setGhostEvidence}) {
         {filteredGhosts.map(g => <tr>
             <td>{g.name}</td>
             {
-              ELabels.map(e => <td>{g.evidence.includes(e) ? "X" : ""}</td>)
-
+              ELabels.map(e => <td onClick={() => toggleEvidence(e)}>{g.evidence.includes(e) ? "X" : ""}</td>)
             }
           </tr>
           )}
